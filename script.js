@@ -38,24 +38,25 @@ function operate(a, b, operator) {
   }
 }
 
-//Init number buttons
-
-const btn1 = document.querySelector("#btn1");
-const btn2 = document.querySelector("#btn2");
-const btn3 = document.querySelector("#btn3");
-const btn4 = document.querySelector("#btn4");
-const btn5 = document.querySelector("#btn5");
-const btn6 = document.querySelector("#btn6");
-const btn7 = document.querySelector("#btn7");
-const btn8 = document.querySelector("#btn8");
-const btn9 = document.querySelector("#btn9");
-
-//Init display variable
-
+// Init number buttons and pass numbers to display function
+const buttons = [];
 const display = document.querySelector("#display");
+let displayArray = [];
 
-//Pass numbers to display function
+for (let i = 0; i <= 9; i++) {
+  buttons[i] = document.querySelector(`#btn${i}`);
+  buttons[i].addEventListener("click", () => {
+    // Avoid multiple zeros at the beginning of the number
+    if (displayArray.length === 0 && i === 0) return;
+    displayArray.push(i);
+    display.textContent = displayArray.join("");
+  });
+}
 
-const passNum = (num) => {
-  display.innerText = num;
-};
+// Init operator buttons
+const btnAdd = document.querySelector("#btnAdd");
+const btnSubstract = document.querySelector("#btnSubstract");
+const btnMultiply = document.querySelector("#btnMultiply");
+const btnDivide = document.querySelector("#btnDivide");
+
+//
