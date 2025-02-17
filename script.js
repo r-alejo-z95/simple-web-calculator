@@ -1,4 +1,4 @@
-//Basic math functions
+// Basic math functions
 function add(a, b) {
   return a + b;
 }
@@ -12,18 +12,19 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
+  if (b === 0) {
+    return "Error: Division by 0";
+  }
   return a / b;
 }
 
-//Operation variables
-
-let num1;
-let num2;
+// Operation variables
+let num1 = null;
+let num2 = null;
 let operator = "";
-let result;
+let result = null;
 
-//Operate function
-
+// Operate function
 function operate(a, b, operator) {
   if (operator === "+") {
     return add(a, b);
@@ -61,24 +62,28 @@ const btnDivide = document.querySelector("#btnDivide");
 
 // Add event listeners to operator buttons
 btnAdd.addEventListener("click", () => {
+  if (displayArray.length === 0) return;
   num1 = parseFloat(displayArray.join(""));
   operator = "+";
   displayArray = [];
 });
 
 btnSubstract.addEventListener("click", () => {
+  if (displayArray.length === 0) return;
   num1 = parseFloat(displayArray.join(""));
   operator = "-";
   displayArray = [];
 });
 
 btnMultiply.addEventListener("click", () => {
+  if (displayArray.length === 0) return;
   num1 = parseFloat(displayArray.join(""));
   operator = "*";
   displayArray = [];
 });
 
 btnDivide.addEventListener("click", () => {
+  if (displayArray.length === 0) return;
   num1 = parseFloat(displayArray.join(""));
   operator = "/";
   displayArray = [];
@@ -87,10 +92,17 @@ btnDivide.addEventListener("click", () => {
 // Add event listener to equal button
 const btnResult = document.querySelector("#btnResult");
 btnResult.addEventListener("click", () => {
+  if (displayArray.length === 0 || num1 === null || operator === "") return;
   num2 = parseFloat(displayArray.join(""));
   result = operate(num1, num2, operator);
+  if (typeof result === "number" && !Number.isInteger(result)) {
+    result = result.toFixed(2); // Round to 2 decimal places
+  }
   display.textContent = result;
   displayArray = [result];
+  num1 = result;
+  num2 = null;
+  operator = "";
 });
 
 // Add event listener to clear button
@@ -98,4 +110,8 @@ const btnClear = document.querySelector("#btnClear");
 btnClear.addEventListener("click", () => {
   displayArray = [];
   display.textContent = "0";
+  num1 = null;
+  num2 = null;
+  operator = "";
+  result = null;
 });
