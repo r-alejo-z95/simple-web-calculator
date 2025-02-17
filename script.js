@@ -59,4 +59,43 @@ const btnSubstract = document.querySelector("#btnSubstract");
 const btnMultiply = document.querySelector("#btnMultiply");
 const btnDivide = document.querySelector("#btnDivide");
 
-//
+// Add event listeners to operator buttons
+btnAdd.addEventListener("click", () => {
+  num1 = parseFloat(displayArray.join(""));
+  operator = "+";
+  displayArray = [];
+});
+
+btnSubstract.addEventListener("click", () => {
+  num1 = parseFloat(displayArray.join(""));
+  operator = "-";
+  displayArray = [];
+});
+
+btnMultiply.addEventListener("click", () => {
+  num1 = parseFloat(displayArray.join(""));
+  operator = "*";
+  displayArray = [];
+});
+
+btnDivide.addEventListener("click", () => {
+  num1 = parseFloat(displayArray.join(""));
+  operator = "/";
+  displayArray = [];
+});
+
+// Add event listener to equal button
+const btnResult = document.querySelector("#btnResult");
+btnResult.addEventListener("click", () => {
+  num2 = parseFloat(displayArray.join(""));
+  result = operate(num1, num2, operator);
+  display.textContent = result;
+  displayArray = [result];
+});
+
+// Add event listener to clear button
+const btnClear = document.querySelector("#btnClear");
+btnClear.addEventListener("click", () => {
+  displayArray = [];
+  display.textContent = "0";
+});
