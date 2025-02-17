@@ -1,0 +1,97 @@
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: monospace;
+}
+
+/* Centering the calculator on the screen */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #222;
+}
+
+/* General calculator styling */
+.calculator {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Calculator display */
+.display {
+  width: 100%;
+  height: 60px;
+  background-color: #111;
+  color: #fff;
+  font-size: 2rem;
+  text-align: right;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow-x: auto;
+}
+
+/* Calculator buttons */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+/* Button styling */
+.btn {
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  background-color: #444;
+  color: white;
+}
+
+/* Hover effect */
+.btn:hover {
+  background-color: #555;
+}
+
+/* Operator buttons */
+.operator {
+  background-color: #ff9500;
+}
+
+.operator:hover {
+  background-color: #e08b00;
+}
+
+/* Clear button */
+.clear {
+  background-color: #d9534f;
+}
+
+.clear:hover {
+  background-color: #c9302c;
+}
+
+/* Equal button */
+#btnResult {
+  background-color: #5cb85c;
+}
+
+#btnResult:hover {
+  background-color: #4cae4c;
+}
